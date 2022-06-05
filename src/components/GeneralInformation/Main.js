@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import GeneralInformation from './GeneralInformation/GeneralInformation';
-import './Main.css';
+import GeneralInformation from './GeneralInformation';
 
 export default class Main extends Component {
   state = {
@@ -9,6 +8,7 @@ export default class Main extends Component {
       email: '',
       phone: '',
     },
+    datas: [],
   };
 
   handleChangeName = (e) => {
@@ -50,6 +50,21 @@ export default class Main extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { generalData } = this.state;
+    const { name, email, phone } = generalData;
+
+    this.setState({
+      generalData: {
+        name,
+        email,
+        phone,
+      },
+      datas: [generalData],
+    });
+  };
+
   render() {
     const { generalData } = this.state;
     return (
@@ -60,6 +75,7 @@ export default class Main extends Component {
           handleChangeName={this.handleChangeName}
           handleChangeEmail={this.handleChangeEmail}
           handleChangePhone={this.handleChangePhone}
+          handleSubmit={this.handleSubmit}
         />
       </div>
     );

@@ -4,11 +4,11 @@ import './GeneralInformation.css';
 
 export default function GeneralInformation(
   {
-    generalData, handleChangeName, handleChangeEmail, handleChangePhone,
+    generalData, handleChangeName, handleChangeEmail, handleChangePhone, handleSubmit,
   },
 ) {
   return (
-    <form className="form" action="#">
+    <form className="form-general" action="#" onSubmit={handleSubmit}>
       <h3>General Informations</h3>
       <label htmlFor="name">Name:</label>
       <input onChange={handleChangeName} value={generalData.name} id="name" />
@@ -28,4 +28,5 @@ GeneralInformation.propTypes = {
   handleChangeName: PropTypes.func.isRequired,
   handleChangeEmail: PropTypes.func.isRequired,
   handleChangePhone: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
