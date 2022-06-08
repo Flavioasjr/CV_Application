@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import GeneralInformation from './GeneralInformation';
+import './GeneralInformation.css';
 
 export default class Main extends Component {
   state = {
@@ -8,7 +10,7 @@ export default class Main extends Component {
       email: '',
       phone: '',
     },
-    datas: [],
+    generalDatas: [],
   };
 
   handleChangeName = (e) => {
@@ -52,32 +54,42 @@ export default class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { addGeneral } = this.props;
     const { generalData } = this.state;
     const { name, email, phone } = generalData;
 
+    if (!name || !email || !phone) return;
     this.setState({
       generalData: {
         name,
         email,
         phone,
       },
-      datas: [generalData],
+      generalDatas: [generalData],
     });
+
+    addGeneral(generalData);
   };
 
   render() {
     const { generalData } = this.state;
+    const { handleClick, classForm } = this.props;
     return (
-      <div>
-        <h1>Fill your CV</h1>
+      <div className="box" onClick={handleClick}>
+        <h3 className="title-form">General Informations</h3>
         <GeneralInformation
           generalData={generalData}
           handleChangeName={this.handleChangeName}
           handleChangeEmail={this.handleChangeEmail}
           handleChangePhone={this.handleChangePhone}
           handleSubmit={this.handleSubmit}
+          classForm={classForm}
         />
       </div>
     );
   }
 }
+
+Main.propTypes = {
+  addGeneral: PropTypes.func.isRequired,
+};

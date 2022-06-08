@@ -24,5 +24,6 @@ module.exports = {
     'react/state-in-constructor': 0,
     'react/forbid-prop-types': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    'react/no-unused-state': 0,
   },
 };

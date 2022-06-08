@@ -1,0 +1,16 @@
+.form-practical {
+  display: none;
+  gap: 20px;
+  margin: 20px;
+}
+
+#initial-date, #finish-date {
+  display: block;
+  width: 100%;
+}
+
+.form-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
