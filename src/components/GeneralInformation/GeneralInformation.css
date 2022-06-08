@@ -26,6 +26,7 @@
   padding: 20px;
   margin-bottom: 20px;
   background-color: white;
+  position: relative;
 }
 
 .btn-save {
@@ -75,3 +76,14 @@ color: #7c7c7c;
   color: #7c7c7c;
 }
 
+.btn-icon {
+  position: absolute;
+  right: 20px;
+  top: 23px;
+  cursor: pointer;
+  color: #7c7c7c;
+}
+
+.hide {
+  display: none;
+}

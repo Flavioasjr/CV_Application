@@ -10,10 +10,41 @@ body {
 }
 
 #root {
-  padding: 20px;
   background-color: #fafafa;
+}
+
+.content {
+  padding: 20px;
+  min-height: 100vh
 }
 
 .title {
   margin: 20px;
+  text-align: center;
+}
+
+.dark-background {
+  background: #00000061;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  z-index: 1;
+}
+
+.show-dark-background {
+  display: block;
+}
+
+.btn-show-cv {
+  width: 150px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #2655a1;
+  background-color: #2655a1;
+  color: white;
+  font-weight: 800;
+  margin: 0 auto;
+  display: block;
 }

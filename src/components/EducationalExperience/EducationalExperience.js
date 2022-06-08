@@ -4,11 +4,16 @@ import './EducationalExperience.css';
 
 export default function EducationalExperience(
   {
-    educationalData, handleChangeName, handleChangeTitle, handleChangeDate, handleSubmit,
+    educationalData,
+    handleChangeName,
+    handleChangeTitle,
+    handleChangeDate,
+    handleSubmit,
+    classForm,
   },
 ) {
   return (
-    <form className="form-educational" onSubmit={handleSubmit}>
+    <form className={classForm} onSubmit={handleSubmit}>
       <div className="row-form">
         <label htmlFor="school-name">School name:</label>
         <input
@@ -45,13 +50,14 @@ export default function EducationalExperience(
       {/* <p>
         {educationalData.isValid ? '' : 'Empty fields'}
       </p> */}
-      <button type="submit" className="btn-save">Save</button>
+      <button type="submit" className="btn-save">Add Education</button>
     </form>
   );
 }
 
 EducationalExperience.propTypes = {
   educationalData: PropTypes.object.isRequired,
+  classForm: PropTypes.string.isRequired,
   handleChangeName: PropTypes.func.isRequired,
   handleChangeTitle: PropTypes.func.isRequired,
   handleChangeDate: PropTypes.func.isRequired,

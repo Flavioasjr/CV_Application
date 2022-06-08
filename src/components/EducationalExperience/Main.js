@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import EducationalExperience from './EducationalExperience';
 
 export default class Main extends Component {
@@ -11,6 +12,12 @@ export default class Main extends Component {
       isValid: true,
     },
     educationalDatas: [],
+    showFormData: {
+      showForm: false,
+      classForm: 'form-general',
+      classIconShow: 'btn-icon',
+      classIconHide: 'btn-icon hide',
+    },
   };
 
   handleChangeName = (e) => {
@@ -55,6 +62,35 @@ export default class Main extends Component {
     });
   };
 
+  handleClick = (e) => {
+    e.preventDefault();
+    const { showFormData } = this.state;
+    const { showForm } = showFormData;
+
+    if (!showForm) {
+      this.setState({
+        showFormData: {
+          showForm: true,
+          classForm: 'form-general show',
+          classIconShow: 'btn-icon hide',
+          classIconHide: 'btn-icon',
+        },
+      });
+    }
+  };
+
+  handleClickHide = (e) => {
+    e.preventDefault();
+    this.setState({
+      showFormData: {
+        showForm: false,
+        classForm: 'form-general',
+        classIconShow: 'btn-icon',
+        classIconHide: 'btn-icon hide',
+      },
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -83,23 +119,37 @@ export default class Main extends Component {
         isValid: true,
       },
       educationalDatas: [...auxEducationalDatas, educationalData],
+      showFormData: {
+        showForm: false,
+        classForm: 'form-educational',
+        classIconShow: 'btn-icon',
+        classIconHide: 'btn-icon hide',
+      },
     });
 
     addEducational(educationalData);
   };
 
   render() {
-    const { educationalData } = this.state;
+    const { educationalData, showFormData } = this.state;
+    const { classForm, classIconShow, classIconHide } = showFormData;
 
     return (
       <div className="box">
         <h3 className="title-form">Educational Experience</h3>
+        <div className={classIconShow}>
+          <FaArrowDown onClick={this.handleClick} />
+        </div>
+        <div className={classIconHide}>
+          <FaArrowUp onClick={this.handleClickHide} />
+        </div>
         <EducationalExperience
           educationalData={educationalData}
           handleChangeName={this.handleChangeName}
           handleChangeTitle={this.handleChangeTitle}
           handleChangeDate={this.handleChangeDate}
           handleSubmit={this.handleSubmit}
+          classForm={classForm}
         />
       </div>
     );

@@ -3,14 +3,15 @@ import './App.css';
 import GeneralInformation from './components/GeneralInformation/Main';
 import EducationalExperience from './components/EducationalExperience/Main';
 import PracticalExperience from './components/Practical Experience/Main';
+import ShowCv from './components/ShowCv/ShowCv';
 
 export default class App extends Component {
   state = {
     practicalExperience: [],
     educationalExperience: [],
     generalInformation: [],
-    showForm: false,
-    classForm: 'form-general',
+    classBackground: 'dark-background',
+    classCv: 'cv',
   };
 
   addPractical = (value) => {
@@ -51,28 +52,75 @@ export default class App extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    const { showForm } = this.state;
+    const {
+      practicalExperience,
+      educationalExperience,
+      generalInformation,
+    } = this.state;
 
-    if (!showForm) {
-      this.setState({
-        showForm: true,
-        classForm: 'form-general show',
-      });
-    }
+    this.setState({
+      practicalExperience,
+      educationalExperience,
+      generalInformation,
+      classBackground: 'dark-background show-dark-background',
+      classCv: 'cv show-cv',
+    });
+  };
+
+  handleClickCloseCv = (e) => {
+    e.preventDefault();
+    const {
+      practicalExperience,
+      educationalExperience,
+      generalInformation,
+    } = this.state;
+
+    this.setState({
+      practicalExperience,
+      educationalExperience,
+      generalInformation,
+      classBackground: 'dark-background',
+      classCv: 'cv',
+    });
   };
 
   render() {
-    const { classForm } = this.state;
+    const {
+      practicalExperience,
+      educationalExperience,
+      generalInformation,
+      classBackground,
+      classCv,
+    } = this.state;
     return (
-      <div className="content">
-        <h1 className="title">Fill Your CV</h1>
-        <GeneralInformation
-          addGeneral={this.addGeneral}
-          handleClick={this.handleClick}
-          classForm={classForm}
+      <div>
+        <div className={classBackground} />
+
+        <div className="content">
+          <h1 className="title">Fill Your CV</h1>
+          <GeneralInformation
+            addGeneral={this.addGeneral}
+          />
+          <EducationalExperience
+            addEducational={this.addEducational}
+          />
+          <PracticalExperience addPractical={this.addPractical} />
+          <button
+            type="button"
+            className="btn-show-cv"
+            onClick={this.handleClick}
+          >
+            Show CV
+          </button>
+        </div>
+
+        <ShowCv
+          practicalExperience={practicalExperience}
+          educationalExperience={educationalExperience}
+          generalInformation={generalInformation}
+          classCv={classCv}
+          handleClickCloseCv={this.handleClickCloseCv}
         />
-        <EducationalExperience addEducational={this.addEducational} />
-        <PracticalExperience addPractical={this.addPractical} />
       </div>
     );
   }

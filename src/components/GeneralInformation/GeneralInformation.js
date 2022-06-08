@@ -52,6 +52,7 @@ export default function GeneralInformation(
 
 GeneralInformation.propTypes = {
   generalData: PropTypes.object.isRequired,
+  classForm: PropTypes.string.isRequired,
   handleChangeName: PropTypes.func.isRequired,
   handleChangeEmail: PropTypes.func.isRequired,
   handleChangePhone: PropTypes.func.isRequired,

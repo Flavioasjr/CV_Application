@@ -11,10 +11,11 @@ export default function PracticalExperience(
     handleChangeInitialDate,
     handleChangeFinishiDate,
     handleSubmit,
+    classForm,
   },
 ) {
   return (
-    <form className="form-practical" onSubmit={handleSubmit}>
+    <form className={classForm} onSubmit={handleSubmit}>
       <div className="row-form">
         <label htmlFor="company">Company name:</label>
         <input
@@ -83,6 +84,7 @@ export default function PracticalExperience(
 
 PracticalExperience.propTypes = {
   experienceData: PropTypes.object.isRequired,
+  classForm: PropTypes.string.isRequired,
   handleChangeCompanyName: PropTypes.func.isRequired,
   handleChangePositionTitle: PropTypes.func.isRequired,
   handleChangeTasks: PropTypes.func.isRequired,

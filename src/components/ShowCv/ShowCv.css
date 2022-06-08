@@ -1,0 +1,59 @@
+.cv {
+  overflow: scroll;
+  position: fixed;
+  width: 602px;
+  height: 532px;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  background: white;
+  transform: translate(-50%, -50%);
+  display: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px 2px;
+  padding: 20px 24px;
+  color: #7c7c7c;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 90%;
+}
+
+.show-cv {
+  display: flex;
+}
+
+.icon-close {
+  position: absolute;
+  right: 20px;
+  color: #7c7c7c;
+  cursor: pointer;
+}
+
+.name-cv {
+  margin-bottom: 5px;
+}
+
+.cv > section > p {
+  font-size: 1.1rem;
+}
+
+.cv-tasks {
+  padding-left: 10px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.title-section-cv {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.list-educational {
+  margin-bottom: 10px;
+}
+
+.experience-data-cv {
+  font-size: 1.1rem;
+  margin-bottom: 3px;
+}
