@@ -1,127 +1,70 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import GeneralInformation from './components/GeneralInformation/Main';
 import EducationalExperience from './components/EducationalExperience/Main';
 import PracticalExperience from './components/Practical Experience/Main';
 import ShowCv from './components/ShowCv/ShowCv';
 
-export default class App extends Component {
-  state = {
-    practicalExperience: [],
-    educationalExperience: [],
-    generalInformation: [],
-    classBackground: 'dark-background',
-    classCv: 'cv',
+export default function App() {
+  const [practicalExperience, setPracticalExperience] = useState([]);
+  const [educationalExperience, setEducationalExperience] = useState([]);
+  const [generalInformation, setGeneralInformation] = useState([]);
+  const [classBackground, setClassBackground] = useState('dark-background');
+  const [classCv, setClassCv] = useState('cv');
+
+  const addPractical = (value) => {
+    setPracticalExperience([...practicalExperience, value]);
   };
 
-  addPractical = (value) => {
-    const {
-      practicalExperience, educationalExperience, generalInformation,
-    } = this.state;
-
-    this.setState({
-      practicalExperience: [...practicalExperience, value],
-      educationalExperience,
-      generalInformation,
-    });
+  const addEducational = (value) => {
+    setEducationalExperience([...educationalExperience, value]);
   };
 
-  addEducational = (value) => {
-    const {
-      practicalExperience, educationalExperience, generalInformation,
-    } = this.state;
-
-    this.setState({
-      practicalExperience,
-      educationalExperience: [...educationalExperience, value],
-      generalInformation,
-    });
+  const addGeneral = (value) => {
+    setGeneralInformation([value]);
   };
 
-  addGeneral = (value) => {
-    const {
-      practicalExperience, educationalExperience,
-    } = this.state;
-
-    this.setState({
-      practicalExperience,
-      educationalExperience,
-      generalInformation: [value],
-    });
-  };
-
-  handleClick = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    const {
-      practicalExperience,
-      educationalExperience,
-      generalInformation,
-    } = this.state;
-
-    this.setState({
-      practicalExperience,
-      educationalExperience,
-      generalInformation,
-      classBackground: 'dark-background show-dark-background',
-      classCv: 'cv show-cv',
-    });
+    setClassBackground('dark-background show-dark-background');
+    setClassCv('cv show-cv');
   };
 
-  handleClickCloseCv = (e) => {
+  const handleClickCloseCv = (e) => {
     e.preventDefault();
-    const {
-      practicalExperience,
-      educationalExperience,
-      generalInformation,
-    } = this.state;
-
-    this.setState({
-      practicalExperience,
-      educationalExperience,
-      generalInformation,
-      classBackground: 'dark-background',
-      classCv: 'cv',
-    });
+    setClassBackground('dark-background');
+    setClassCv('cv');
   };
 
-  render() {
-    const {
-      practicalExperience,
-      educationalExperience,
-      generalInformation,
-      classBackground,
-      classCv,
-    } = this.state;
-    return (
-      <div>
-        <div className={classBackground} />
+  return (
+    <div>
+      <div className={classBackground} />
 
-        <div className="content">
-          <h1 className="title">Fill Your CV</h1>
-          <GeneralInformation
-            addGeneral={this.addGeneral}
-          />
-          <EducationalExperience
-            addEducational={this.addEducational}
-          />
-          <PracticalExperience addPractical={this.addPractical} />
-          <button
-            type="button"
-            className="btn-show-cv"
-            onClick={this.handleClick}
-          >
-            Show CV
-          </button>
-        </div>
-
-        <ShowCv
-          practicalExperience={practicalExperience}
-          educationalExperience={educationalExperience}
-          generalInformation={generalInformation}
-          classCv={classCv}
-          handleClickCloseCv={this.handleClickCloseCv}
+      <div className="content">
+        <h1 className="title">Fill Your CV</h1>
+        <GeneralInformation
+          addGeneral={addGeneral}
         />
+        <EducationalExperience
+          addEducational={addEducational}
+        />
+        <PracticalExperience addPractical={addPractical} />
+        <button
+          type="button"
+          className="btn-show-cv"
+          onClick={handleClick}
+        >
+          Show CV
+        </button>
       </div>
-    );
-  }
+
+      <ShowCv
+        practicalExperience={practicalExperience}
+        educationalExperience={educationalExperience}
+        generalInformation={generalInformation}
+        classCv={classCv}
+        handleClickCloseCv={handleClickCloseCv}
+      />
+    </div>
+  );
 }

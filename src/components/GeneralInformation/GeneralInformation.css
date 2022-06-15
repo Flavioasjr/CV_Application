@@ -41,6 +41,10 @@
   justify-self: center;
 }
 
+.save-form {
+  justify-self: center;
+}
+
 .input {
   appearance: none;
   background: rgb(255, 255, 255);
@@ -86,4 +90,10 @@ color: #7c7c7c;
 
 .hide {
   display: none;
+}
+
+.field-empty {
+  text-align: center;
+  color:red;
+  margin-top: 2px;
 }

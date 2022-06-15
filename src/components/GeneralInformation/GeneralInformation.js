@@ -45,7 +45,13 @@ export default function GeneralInformation(
         />
 
       </div>
-      <button type="submit" className="btn-save">Save</button>
+
+      <div className="save-form">
+        <button type="submit" className="btn-save">Save</button>
+        <p className="field-empty">
+          {generalData.isValid ? '' : 'Empty fields'}
+        </p>
+      </div>
     </form>
   );
 }

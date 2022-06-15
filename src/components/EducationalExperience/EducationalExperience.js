@@ -47,10 +47,13 @@ export default function EducationalExperience(
         />
       </div>
 
-      {/* <p>
-        {educationalData.isValid ? '' : 'Empty fields'}
-      </p> */}
-      <button type="submit" className="btn-save">Add Education</button>
+      <div className="save-form">
+        <button type="submit" className="btn-save">Add Education</button>
+        <p className="field-empty">
+          {educationalData.isValid ? '' : 'Empty fields'}
+        </p>
+
+      </div>
     </form>
   );
 }

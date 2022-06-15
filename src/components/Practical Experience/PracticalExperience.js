@@ -73,11 +73,13 @@ export default function PracticalExperience(
         </div>
       </div>
 
-      <p>
-        {experienceData.isValid ? '' : 'Field empty'}
-      </p>
-      <button type="submit" className="btn-save">Add Experience</button>
+      <div className="save-form">
+        <button type="submit" className="btn-save">Add Experience</button>
+        <p className="field-empty">
+          {experienceData.isValid ? '' : 'Empty fields'}
+        </p>
 
+      </div>
     </form>
   );
 }
