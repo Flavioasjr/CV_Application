@@ -43,12 +43,11 @@ export default function App() {
   const handleClickGeneratePDF = () => {
     setGeneratePDF(true);
   };
-
   useEffect(() => {
     if (generatePDF) {
       const report = new JsPDF('portrait', 'pt', 'a4');
       report.html(document.querySelector('#cv-pdf'), { margin: [30, 50, 70, 5] }).then(() => {
-        report.save('report.pdf');
+        report.save('CV.pdf');
       });
       setGeneratePDF(false);
     }
