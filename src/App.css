@@ -36,7 +36,8 @@ body {
   display: block;
 }
 
-.btn-show-cv {
+.btn-show-cv,
+.btn-export-pdf {
   width: 150px;
   height: 40px;
   font-size: 1rem;
@@ -45,6 +46,13 @@ body {
   background-color: #2655a1;
   color: white;
   font-weight: 800;
-  margin: 0 auto;
-  display: block;
+}
+
+.btn-export-pdf {
+  background: white;
+  color: #2655a1;
+}
+
+.buttons {
+  text-align: center;
 }

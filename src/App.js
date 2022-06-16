@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import JsPDF from 'jspdf';
 import GeneralInformation from './components/GeneralInformation/Main';
 import EducationalExperience from './components/EducationalExperience/Main';
 import PracticalExperience from './components/Practical Experience/Main';
 import ShowCv from './components/ShowCv/ShowCv';
+import ExportPdf from './components/ExportPdf/ExportPdf';
 
 export default function App() {
   const [practicalExperience, setPracticalExperience] = useState([]);
@@ -36,6 +38,22 @@ export default function App() {
     setClassCv('cv');
   };
 
+  const [generatePDF, setGeneratePDF] = useState(false);
+
+  const handleClickGeneratePDF = () => {
+    setGeneratePDF(true);
+  };
+
+  useEffect(() => {
+    if (generatePDF) {
+      const report = new JsPDF('portrait', 'pt', 'a4');
+      report.html(document.querySelector('#cv-pdf'), { margin: [30, 50, 70, 5] }).then(() => {
+        report.save('report.pdf');
+      });
+      setGeneratePDF(false);
+    }
+  });
+
   return (
     <div>
       <div className={classBackground} />
@@ -49,21 +67,35 @@ export default function App() {
           addEducational={addEducational}
         />
         <PracticalExperience addPractical={addPractical} />
-        <button
-          type="button"
-          className="btn-show-cv"
-          onClick={handleClick}
-        >
-          Show CV
-        </button>
-      </div>
+        <div className="buttons">
+          <button
+            type="button"
+            className="btn-show-cv"
+            onClick={handleClick}
+          >
+            Show CV
+          </button>
+          <button
+            type="button"
+            className="btn-export-pdf"
+            onClick={handleClickGeneratePDF}
+          >
+            Download CV
+          </button>
 
+        </div>
+      </div>
       <ShowCv
         practicalExperience={practicalExperience}
         educationalExperience={educationalExperience}
         generalInformation={generalInformation}
         classCv={classCv}
         handleClickCloseCv={handleClickCloseCv}
+      />
+      <ExportPdf
+        practicalExperience={practicalExperience}
+        educationalExperience={educationalExperience}
+        generalInformation={generalInformation}
       />
     </div>
   );

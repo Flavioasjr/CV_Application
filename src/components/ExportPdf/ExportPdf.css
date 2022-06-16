@@ -1,0 +1,14 @@
+.export-pdf {
+  display: none;
+}
+
+#cv-pdf {
+  padding: 20px;
+  display: flex;
+  color: #7c7c7c;
+  flex-direction: column;
+  gap: 25px;
+  width: 600px;
+  height: 850px;
+  margin-bottom: 20px;
+}
